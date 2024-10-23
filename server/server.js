@@ -2,6 +2,7 @@ import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
 import connectDb from './config/mongo.js'
+import userRouter from './routes/userRoutes.js'
 
 
 // app config
@@ -14,6 +15,8 @@ app.use(cors())
 await connectDb()
 
 //api orutes 
+app.use('/api/user', userRouter)
+
 app.get('/', (req,res)=> {
     res.send("Api working")
 })
